@@ -1,0 +1,19 @@
+*{font-family: "Times New Roman", Times, serif;}
+a {
+    text-decoration: none;
+    color: white !important;
+    font-weight: 500;
+}
+a:hover{
+    color:#FF0202 #FF0202 !important;
+    text-decoration: none;
+}
+
+hr{
+    margin-top: 0px;
+    margin-bottom: 5%;
+}
+
+#MainMenue {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
