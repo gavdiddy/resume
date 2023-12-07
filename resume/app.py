@@ -1,14 +1,15 @@
+#import packages
 from pathlib import Path
 
 import streamlit as st
 from PIL import Image
-
+#startup
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "styles" / "main.css"
 resume_file = current_dir / "assets" / "resumePDF.pdf"
 profile_pic = current_dir / "assets" / "profile-pic.png"
 
-
+#creating variables
 PAGE_TITLE = "Resume | Gavin Winot"
 PAGE_ICON= ":wave:"
 NAME = "Gavin Winot"
@@ -22,18 +23,19 @@ SOCIAL_MEDIA={
     "Facebook": "https://facebook.com/",
     "YouTube":"https://youtube.com/",
 }
+#setting page icon and title
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
-
+#applying css
 with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
 profile_pic = Image.open(profile_pic)
-
+#applying profile pic
 col1, col2 = st.columns(2, gap="small")
 with col1:
     st.image(profile_pic, width=230)
-
+#download button email and description
 with col2:
     st.title(NAME)
     st.write(DESCRIPTION)
@@ -44,10 +46,12 @@ with col2:
         mime="application/octet-stream",
     )
     st.write(EMAIL)
-
+#social media links
 cols = st.columns(len(SOCIAL_MEDIA))
 for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-    cols[index].write(f"[{platform}]({link})")
+ 
+cols[index].write(f"[{platform}]({link})")
+#filler text
 st.write("#")
 st.subheader("Experience & Qualifications")
 st.write(
